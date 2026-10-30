@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FastAPI Template</title>
+  </head>
+<body>
+  <h1>List Students from table</h1>
+  <h2>我知道deleted看起來不像超連結，但相信我，點下去真的有效，我也不知道為什麼</h2>
+
+<button type="button"
+        onclick="window.location.href='/student/add'">
+    Insert
+</button>
+
+  <!-- Student table -->
+  <table>
+    <tr class="hdr">
+      <td>流水號</td>
+      <td>學號</td>
+      <td>姓名</td>
+    </tr>
+    {% for p in students %}
+    <tr>
+      <td>
+        {{ loop.index }}:
+        <a class="lnk-edit" href="/student/edit/{{ p.stuid }}">Edit</a>
+        <span class="sep"> | </span>
+        <form method="post" action="/student/delete" style="display:inline"
+              onsubmit="return confirm('Are you sure you want to delete {{ p.name }}?')">
+          <input type="hidden" name="stuid" value="{{ p.stuid }}">
+          <a class="lnk-delete" onclick="this.closest('form').submit()">Delete</a>
+        </form>
+      </td>
+      <td>{{ p.stuid }}</td>
+      <td>{{ p.name }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <script>
+    function toggleInsert() {
+      const f = document.getElementById('insert-form');
+      f.style.display = f.style.display === 'none' ? 'block' : 'none';
+    }
+  </script>
+</body>
+</html>

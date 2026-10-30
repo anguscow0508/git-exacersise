@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Student</title>
+    <style>
+      body {
+        font-family: "Times New Roman", Times, serif;
+        padding: 20px 30px;
+        background: #fff;
+        color: #000;
+      }
+      h1 { font-size: 2em; font-weight: bold; margin-bottom: 16px; }
+      table { border-collapse: collapse; }
+      td { padding: 4px 8px 4px 0; }
+      td:first-child { font-weight: bold; width: 100px; }
+      input[type=text], input[type=number] { width: 160px; }
+      .btns { margin-top: 12px; }
+      .btns button { margin-right: 8px; padding: 2px 12px; }
+    </style>
+  </head>
+<body>
+  <h1>Add Student</h1>
+  <form method="post" action="/student/add">
+    <table>
+      <tr>
+        <td>Student ID:</td>
+        <td><input type="number" name="stuid"  required></td>
+      </tr>
+      <tr>
+        <td>Name:</td>
+        <td><input type="text"   name="name"   required></td>
+      </tr>
+      <tr>
+        <td>Height:</td>
+        <td><input type="number" name="height" required></td>
+      </tr>
+    </table>
+    <div class="btns">
+      <button type="submit">Save</button>
+      <button type="button" onclick="history.back()">Cancel</button>
+    </div>
+  </form>
+</body>
+</html>
